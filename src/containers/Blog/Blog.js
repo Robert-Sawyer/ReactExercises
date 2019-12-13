@@ -16,7 +16,7 @@ class Blog extends Component {
                     <nav>
                         <ul>
                             <li><NavLink
-                                to="/"
+                                to="/posts/"
                                 exact
                                 activeClassName='my-active' //inaczej nadawałoby domyślnie klasę active
                                 activeStyle={{
@@ -31,11 +31,11 @@ class Blog extends Component {
                         </ul>
                     </nav>
                 </header>
-                <Route path="/" exact component={Posts}/>
+
                 <Switch>
                     {/*dodajemy dwa Routy do switcha żeby react mógł wybrać jeden i nie mylił ścieżki*/}
                     <Route path="/new-post" component={NewPost}/>
-                    <Route path="/:id" exact component={FullPost}/>
+                    <Route path="/posts" component={Posts}/>
                 </Switch>
             </div>
         );
