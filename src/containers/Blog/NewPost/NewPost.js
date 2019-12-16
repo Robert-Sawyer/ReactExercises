@@ -21,7 +21,10 @@ class NewPost extends Component {
         axios.post("/posts", data)
             .then(response => {
                 console.log(response);
-                this.setState({submitted: true});
+                //Alternatywna metoda to tworzenia submitted i zmieniania state - można wykorzystać history z obiektu props
+                //replace, lub push robią generalnie to samo co użycie komponentu <redirect>
+                this.props.history.replace('/posts');
+                // this.setState({submitted: true});
             })
     }
 
