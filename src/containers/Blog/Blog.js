@@ -8,6 +8,9 @@ import FullPost from './FullPost/FullPost';
 import './Blog.css';
 
 class Blog extends Component {
+    state = {
+        auth: false
+    }
 
     render() {
         return (
@@ -34,7 +37,9 @@ class Blog extends Component {
 
                 <Switch>
                     {/*dodajemy dwa Routy do switcha żeby react mógł wybrać jeden i nie mylił ścieżki*/}
-                    <Route path="/new-post" component={NewPost}/>
+            {/*Guards - warunkujemy wyrenderowanie Routa z linkiem nowego posta. ALTERNATYWA: w newPost w metodzie*/}
+            {/*componentDidMount sprawdzamy, czy user jest uprawniony za pomocą history.replace("/strona po przekierowaniu")*/}
+                    {this.state.auth ? <Route path="/new-post" component={NewPost}/> : null}
                     <Route path="/posts" component={Posts}/>
                     <Redirect from="/" to="/posts"/>
                 </Switch>
