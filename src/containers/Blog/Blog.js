@@ -41,7 +41,9 @@ class Blog extends Component {
             {/*componentDidMount sprawdzamy, czy user jest uprawniony za pomocą history.replace("/strona po przekierowaniu")*/}
                     {this.state.auth ? <Route path="/new-post" component={NewPost}/> : null}
                     <Route path="/posts" component={Posts}/>
-                    <Redirect from="/" to="/posts"/>
+                    {/*Alternatywny sposób do łapania błędu 404.*/}
+                    <Route render={() => <h1>Not found</h1>}/>
+                    {/*<Redirect from="/" to="/posts"/>*/}
                 </Switch>
             </div>
         );
